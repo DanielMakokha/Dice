@@ -33,3 +33,19 @@ function initial_state() {
     player1A.classList.remove('player_active')
 }
 initial_state();
+//Rolling the dice
+btn_roll.addEventListener('click',function(){
+    if (game) {
+        const random_dice=Math.floor(Math.random()*6)+1;
+        dice.classList.remove('hidden');
+        dice.src=`dice-${random_dice}.png`;
+        
+        if (random_dice !==1) {
+         curentScore += random_dice;
+         document.getElementById(`current_${activePlayer}`).textContent= curentScore
+        }else{
+         
+        }
+     }
+})
+
