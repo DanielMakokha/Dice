@@ -49,3 +49,35 @@ btn_roll.addEventListener('click',function(){
      }
 })
 
+// Hold
+btn_hold.addEventListener('click', function() {
+    if(game) {
+        scores[activePlayer] += curentScore;
+
+
+        document.getElementById(`score_${activePlayer}`).textContent = scores[activePlayer];
+        if(scores[activePlayer] >= 20) {
+            game = false;
+            dice.classList.add('hidden');
+
+
+            document.querySelector(`.player_${activePlayer}`).classList.add('player_winner');
+            document.querySelector(`.player_${activePlayer}`).classList.remove('player_active');
+        }else{
+            switchPlayers();
+        }
+    }
+});
+
+function switchPlayers() {
+    document.getElementById(`current_${activePlayer}`).textContent = 0;
+    curentScore = 0
+    if (activePlayer == 1) {
+        activePlayer = 0
+    } else {
+activePlayer = 1
+    }
+    player0A.classList.toggle('player_active')
+    player1A.classList.toggle('player_active')
+}
+btn_new.addEventListener('click', initial_state)
